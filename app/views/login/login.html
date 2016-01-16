@@ -1,0 +1,33 @@
+<section class="login">
+  <div class="container">
+    <div class="page-header">
+      <h2>Login / Register</h2>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-6 col-sm-push-3">
+        <div class="col-xs-12">
+          <h3>Email</h3>
+          <input type="text" class="form-control" placeholder="Email" ng-model="email" />
+        </div>
+
+        <div class="col-xs-12">
+          <h3>Parola</h3>
+          <input type="password" class="form-control" placeholder="Parola" ng-model="pass" />
+        </div>
+
+        <div class="col-xs-12" ng-cloak ng-show="createMode">
+          <h3>Parola (confirmare)</h3>
+          <input type="password" class="form-control" placeholder="Parola" ng-model="confirm" />
+        </div>
+
+        <div class="col-xs-12 buttons">
+          <button class="btn btn-info" ng-click="login(email, pass)" ng-hide="createMode">Log In</button>
+          <button class="btn btn-info" ng-click="createMode = true" ng-hide="createMode">Register</button>
+          <button class="btn btn-success" ng-cloak ng-show="createMode" ng-click="createAccount()">Create Account</button>
+          <button class="btn btn-warning" ng-cloak ng-show="createMode" ng-click="createMode = false">Cancel</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

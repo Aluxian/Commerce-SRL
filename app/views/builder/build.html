@@ -1,0 +1,70 @@
+<section class="builder">
+  <div class="container">
+    <div class="row">
+      <div class="page-header">
+        <h2 ng-bind="builderTitle.$value"></h2>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-xs-12">
+        <progressbar max="100" value="(completedForms() * 100) / buildForms.length"><span style="color: white; white-space: nowrap;"></progressbar>
+      </div>
+    </div>
+
+    <div class="row" style="margin-bottom: 20px;">
+      <div class="col-xs-12">
+        <h3>Creeaza-ti propriul pachet, completand campurile din partea stanga a paginii. Cand toate campurile au fost completate, va aparea un pret orientativ a proiectului tau.</h3>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6">
+        <div ng-repeat="form in buildForms">
+          <h4 ng-bind="form.name"></h4>
+
+          <input type="number" class="form-control" placeholder="Valoare" ng-model="form.value" />
+        </div>
+      </div>
+
+      <div class="col-md-6 text-center">
+        <h4>
+          Pret:
+          <span class="green-color">
+            <span ng-show="completedAllForms()">{{ getBuildResults(buildForms, builderExpression.$value) }}</span>
+            <span ng-show="!completedAllForms()">0</span>
+            lei
+          </span>
+        </h4>
+
+        <h4>Pentru mai multe detalii, ne puteti contacta <a href="#/contact">aici</a>.</h4>
+      </div> <!-- col-md-6 -->
+    </div> <!-- row -->
+
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="page-header page-header-with-icon">
+          <i class="fa fa-usd"></i>
+          <h3>Preturi avantajoase</h3>
+        </div>
+      </div>
+
+      <div class="col-xs-12 text-center">
+        <p class="lead">Preturile noastre sunt avatanjoase, se apropie de pretul producatorilor. Periodic, puteti beneficia de reduceri, firma noastra punand la dispozitia dumneavoastra o oferta saptamanala.</p>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="page-header page-header-with-icon">
+          <i class="fa fa-truck"></i>
+          <h3>Curierat rapid</h3>
+        </div>
+      </div>
+
+      <div class="col-xs-12 text-center">
+        <p class="lead">Fiindca stim cat de important este sa va aveti produsul la timp, firma noastra colaboreaza cu FedEX, ceea ce face posibila librarea in maxim 48 de ore. Daca aceasta limita este depasita, beneficiati de o reducere de 20% din pretul produsului.</p>
+      </div>
+    </div>
+  </div> <!-- container -->
+</section>

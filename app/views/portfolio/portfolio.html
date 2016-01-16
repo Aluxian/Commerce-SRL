@@ -1,0 +1,58 @@
+<section class="projects">
+  <div class="container">
+    <div class="page-header">
+      <h3 ng-bind="projectsTitle.$value">Proiectele noastre</h3>
+    </div>
+
+    <div class="row">
+      <div class="project col-xs-12 col-sm-6 col-md-4 col-lg-3" ng-repeat="project in projects">
+        <div class="panel">
+          <img style="background-image: url('{{ project.image }}')" />
+          <div class="title"><span ng-bind="project.name"></span></div>
+          <div class="description"><span ng-bind="project.description"></span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="page-header page-header-with-icon">
+          <i class="fa fa-star"></i>
+          <h3>PROIECTELE NOASTRE SUNT</h3>
+        </div>
+
+        <div class="principle col-xs-12 col-sm-12 col-md-4 col-lg-4">
+          <div class="txt-panel">
+            <h3>Calitative</h3>
+            <h4>Produsele pe care le oferim sunt de top, de la producatori cu renume, deci si rezultatul folosirii lor va fi unul calitativ</h4>
+          </div>
+        </div>
+        <div class="principle col-xs-12 col-sm-12 col-md-4 col-lg-4">
+          <div class="txt-panel">
+            <h3>Longevive</h3>
+            <h4>Peste 10 ani proiectul dumneavoastra va fi la fel de rezistent si de atragator ca la inceput</h4>
+          </div>
+        </div>
+        <div class="principle col-xs-12 col-sm-12 col-md-4 col-lg-4">
+          <div class="txt-panel">
+            <h3>Eficiente</h3>
+            <h4>Echipa noastra este antrenata cu eficienta in minte</h4>
+          </div>
+        </div>
+      </div>
+    </div> <!-- row -->
+
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="page-header page-header-with-icon">
+          <i class="fa fa-user"></i>
+          <h3>PROIECTUL TAU VA FI</h3>
+        </div>
+      </div>
+
+      <div class="col-xs-12 text-center">
+        <h4>Vrei sa afli cum va fi proiectul tau ? Vezi <a href="#/construieste">aici</a>.</h4>
+      </div>
+    </div>
+  </div>
+</section>

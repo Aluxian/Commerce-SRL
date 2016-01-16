@@ -1,0 +1,23 @@
+<section class="performance">
+  <div class="container">
+    <div class="page-header">
+      <h2>PERFORMANTA</h2>
+    </div>
+
+    <div class="row" ng-repeat="graph in graphs">
+      <div class="graph-panel">
+        <div ng-show="graph.alignLeft" class="col-xs-12 col-sm-12 col-md-6 description">
+          <h3>{{graph.title}}</h3>
+          <p>{{graph.description}}</p>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-6 chart">
+          <canvas id="bar" class="chart chart-line" data="graph.data" labels="graph.labels" height="100"></canvas>
+        </div>
+        <div ng-hide="graph.alignLeft" class="col-xs-12 col-sm-12 col-md-6 description right">
+          <h3>{{graph.title}}</h3>
+          <p>{{graph.description}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

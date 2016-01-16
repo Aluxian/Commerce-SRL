@@ -1,0 +1,199 @@
+<section class="account">
+  <div class="container">
+    <div class="row">
+      <div class="page-header">
+        <h2>Panou de control</h2>
+      </div>
+    </div>
+
+    <tabset>
+      <tab heading="Setari generale">
+        <div class="container">
+          <div class="page-header">
+            <h3>Aplicatie</h3>
+          </div>
+
+          <div class="row">
+            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3" ng-repeat="option in optionsList">
+              <h3 ng-bind="option.name"></h3>
+
+              <input type="text" class="form-control" ng-model="options[option.key]">
+            </div>
+          </div>
+        </div>
+      </tab>
+
+      <tab heading="Setari cont">
+        <div class="container">
+          <div class="page-header">
+            <h3>Profil</h3>
+          </div>
+
+          <div class="row">
+            <div class="col-md-4">
+              <h3>Nume</h3>
+              <input type="text" class="form-control" name="name" ng-model="profile.name"/>
+            </div>
+
+            <div class="col-md-4">
+              <h3>Email</h3>
+              <h4 ng-bind="profile.email"></h4>
+            </div>
+
+            <div class="col-md-4">
+              <h3>Rol</h3>
+              <h4 ng-bind="profile.role || 'Utilizator'"></h4>
+            </div>
+          </div>
+
+          <div class="page-header">
+            <h3>Schimba-ti parola</h3>
+          </div>
+
+          <div class="row">
+            <div class="col-md-4">
+              <h3>Parola actuala</h3>
+              <input type="password" class="form-control" ng-keypress="clear()" ng-model="oldpass"/>
+            </div>
+
+            <div class="col-md-4">
+              <h3>Parola noua</h3>
+              <input type="password" class="form-control" ng-keypress="clear()" ng-model="newpass"/>
+            </div>
+
+            <div class="col-md-4">
+              <h3>Parola noua (confirmare)</h3>
+              <input type="password" class="form-control" ng-keypress="clear()" ng-model="confirm"/>
+            </div>
+          </div>
+
+          <div class="row" style="margin-top: 15px;">
+            <div class="col-xs-12">
+              <div class="pull-right">
+                <button class="btn btn-success" ng-click="changePassword(oldpass, newpass, confirm)">Schimba parola</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="page-header">
+            <h3>Schimba-ti adresa de email</h3>
+          </div>
+
+          <div class="row">
+            <div class="col-md-6">
+              <h3>Adresa noua</h3>
+              <input type="text" class="form-control" ng-keypress="clear()" ng-model="newEmail">
+            </div>
+
+            <div class="col-md-6">
+              <h3>Parola</h3>
+              <input type="password" class="form-control" ng-keypress="clear()" ng-model="pass">
+            </div>
+          </div>
+
+          <div class="row" style="margin-top: 15px;">
+            <div class="col-xs-12">
+              <div class="pull-right">
+                <button class="btn btn-success" ng-click="changeEmail(pass, newEmail)">Schimba mailul</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </tab>
+
+      <tab heading="{{ entity.name }}" ng-repeat="entity in entities">
+        <div class="container">
+          <div class="page-header">
+            <h3 ng-bind="entity.name"></h3>
+          </div>
+
+          <div class="row">
+            <div class="col-xs-12">
+              <h3>Numele paginii</h3>
+              <input type="text" class="form-control" ng-model="entity.title.$value" ng-change="entity.title.$save()" />
+            </div>
+          </div>
+
+          <div class="row" ng-show="entity.isBuilder">
+            <div class="col-xs-12">
+              <h3>Expresia care calculeaza pretul</h3>
+              <input type="text" class="form-control" placeholder="Expresie" ng-model="builderExpression.$value" ng-change="builderExpression.$save()" />
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-xs-12">
+              <h3>Lista</h3>
+            </div>
+          </div>
+
+          <style type="text/css">
+            .list-item {
+              margin-top: 10px;
+              margin-left: 0px;
+              margin-right: 0px;
+              padding: 15px;
+              box-shadow: 0px 0px 1px 1px rgba(0, 0, 0, 0.1);
+            }
+
+            .list-item .field {
+              overflow: hidden;
+            }
+
+            .list-item .field span {
+              font-size: 14px;
+            }
+
+            .list-item .btn {
+              margin-top: 10px;
+            }
+
+            .new {
+              width: 100%;
+              height: 100%;
+              padding-top: 5px;
+              padding-bottom: 5px;
+              cursor: pointer;
+              color: white;
+              text-align: center;
+              background-color: #5cb85c;
+            }
+          </style>
+
+          <div class="row">
+            <div class="col-xs-12" ng-click="addToArray({ name: entity.singular + ' nou', description: 'Descriere' }, entity.contents)">
+              <div class="new">
+                <h4>Adauga un {{ entity.singular }} nou</h4>
+              </div>
+            </div>
+          </div>
+
+          <div class="row list-item" ng-repeat="object in entity.contents">
+            <div class="col-md-12" ng-show="!object.edited">
+              <div class="field" ng-repeat="field in entity.fields">
+                <h4>
+                  {{ field.name }}:
+                  <span ng-bind="object[field.key]"></span>
+                </h4>
+              </div>
+
+              <button class="btn btn-info" ng-click="editObject(object, entity)">Editeaza</button>
+              <button class="btn btn-danger" ng-click="removeFromArray(object, entity.contents)">Sterge</button>
+            </div>
+
+            <div class="col-md-6" ng-show="object.edited">
+              <div class="field" ng-repeat="field in entity.fields">
+                <h4 ng-bind="field.name"></h4>
+
+                <input type="{{ field.type || 'text' }}" class="form-control" ng-model="object[field.key + '_temp']">
+              </div>
+
+              <button class="btn btn-warning" ng-click="stopEditingObject(object)">Discard</button>
+              <button class="btn btn-success" ng-click="saveObjectInArray(object, entity.contents)">Save</button>
+            </div>
+          </div>
+        </div>
+      </tab>
+    </tabset>
+  </div>
+</section>

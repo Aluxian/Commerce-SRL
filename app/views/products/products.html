@@ -1,0 +1,39 @@
+<section class="products">
+  <div class="container">
+    <div class="page-header">
+      <h3 ng-bind="productsTitle.$value"></h3>
+    </div>
+
+    <div class="row" style="padding-left: 15px; padding-right: 15px;">
+      <div class="col-md-6">
+        <h4>Cauta produs</h4>
+
+        <input type="text" class="form-control" placeholder="Nume, descriere sau pret" ng-model="searchQuery.$" />
+      </div>
+
+      <div class="col-md-6">
+        <h4>Ordoneaza</h4>
+
+        <div style="cursor: pointer;">
+          <span>Dupa pret:
+            <span ng-class="!searchReverse ? 'green-color': ''" ng-click="searchReverse = false;">Ascendent</span>
+            |
+            <span ng-class="searchReverse ? 'green-color': ''" ng-click="searchReverse = true;">Descendent</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="product col-xs-12 col-sm-6 col-md-3" ng-repeat="product in products | filter:searchQuery:strict | orderBy: 'price':searchReverse">
+        <div class="panel">
+          <img style="background-image: url('{{ product.image }}')" />
+          <div class="title small"><span ng-bind="product.name"></span></div>
+          <div class="description"><span ng-bind="product.description"></span></div>
+          <div class="description green-color" style="height: 100px; font-size: 18px;">
+            <span ng-bind="'Pret: ' + product.price + ' lei'"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

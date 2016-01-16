@@ -1,0 +1,44 @@
+<section class="partners">
+  <div class="container">
+    <div class="page-header">
+      <h2 ng-bind="partnersTitle.$value">Parteneri</h2>
+    </div>
+
+    <div class="row">
+      <div class="partner col-xs-12 col-sm-6 col-md-3" ng-repeat="partner in partners">
+        <div class="panel text-center">
+          <img style="background-image: url('{{ partner.image }}')" />
+          <div class="title"><span ng-bind="partner.name"></span></div>
+          <div class="description"><span ng-bind="partner.description"></span></div>
+          <div>Suntem parteneri din {{ partner.startYear }}</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="page-header page-header-with-icon">
+          <i class="fa fa-users"></i>
+          <h3>De incredere</h3>
+        </div>
+      </div>
+
+      <div class="col-xs-12 text-center">
+        <p class="lead">Suntem de incredere. Nu o spunem noi, ci partnerii cu care am lucrat. Oferim cele mai calitative servicii la cele mai avantajoase preturi. Doriti un parteneriat ? <a href="#/contact">Contactati-ne.</a></p>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="page-header page-header-with-icon">
+          <i class="fa fa-clock-o"></i>
+          <h3>Cu vechime in domeniu</h3>
+        </div>
+      </div>
+
+      <div class="col-xs-12 text-center">
+        <p class="lead">Firma noastra a fost infiintata acum 10 ani si a reusit sa isi mareasca reteaua de distribuitori, ajungand a 4-a firma din Romania ca si cantiate de produse exportate</p>
+      </div>
+    </div>
+  </div>
+</section>

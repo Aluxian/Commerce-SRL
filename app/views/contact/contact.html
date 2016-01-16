@@ -1,0 +1,83 @@
+<div class="map">
+  <iframe frameborder="0" style="border:0" ng-src="{{ mapUrl }}"></iframe>
+</div>
+
+<section class="contact">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 motto">
+        <h3 ng-bind="options.motto">MOTTO Veniti si ne vizitati firma! Oferim castori gratis!</h3>
+      </div>
+    </div>
+
+    <div class="page-header" style="margin-top: 0px;">
+      <h2>CONTACT</h2>
+    </div>
+
+    <div class="row details">
+      <div class="col-xs-12 col-sm-6 col-md-3 detail">
+        <span class="fa fa-map-marker"></span>
+        <h3>Adresa</h3>
+        <h4 ng-bind="options.address"></h4>
+      </div>
+
+      <div class="col-xs-12 col-sm-6 col-md-3 detail">
+        <span class="fa fa-phone"></span>
+        <h3>Telefon</h3>
+        <h4 ng-bind="options.phoneNumber"></h4>
+      </div>
+
+      <div class="col-xs-12 col-sm-6 col-md-3 detail">
+        <span class="fa fa-envelope"></span>
+        <h3>Email</h3>
+        <h4 ng-bind="options.email"></h4>
+      </div>
+
+      <div class="col-xs-12 col-sm-6 col-md-3 detail">
+        <span class="fa fa-clock-o"></span>
+        <h3>Program</h3>
+        <pre ng-bind="options.hours"></pre>
+      </div>
+    </div>
+
+    <div class="row">
+
+      <div class="col-md-6">
+        <div class="page-header">
+          <h3>TRIMITE-NE UN EMAIL</h3>
+        </div>
+
+        <div class="emailform">
+          <input class="form-control" type="text" placeholder="Nume" />
+          <input class="form-control" type="text" placeholder="Email" />
+          <textarea class="form-control" placeholder="Mesaj"></textarea>
+          <button type="button" class="btn btn-success">TRIMITE</button>
+        </div>
+      </div>
+
+      <div class="col-md-6 chat" ng-controller="ChatCtrl">
+        <div class="page-header">
+          <h3>COMUNICA CU NOI</h3>
+        </div>
+
+        <div class="input-group">
+          <input type="text" class="form-control" placeholder="Message..." ng-model="newMessage">
+          <span class="input-group-btn">
+            <button class="btn btn-success" type="button" ng-click="addMessage(newMessage);newMessage = null;">Trimite</button>
+          </span>
+        </div>
+
+        <ul id="messages" ng-show="messages.length">
+          <li ng-repeat="message in messages | reverse">
+            <div class="msg">
+              <b>{{message.author}}</b> <span class="text-muted">{{ message.date | date:'medium' }}</span>
+              <br>
+              {{message.text}}
+            </div>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>

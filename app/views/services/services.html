@@ -1,0 +1,42 @@
+<section class="services">
+
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="page-header">
+          <h3 ng-bind="servicesTitle.$value"></h3>
+        </div>
+
+        <div class="service col-xs-12 col-sm-6 col-md-4 col-lg-4" ng-repeat="service in services">
+          <div class="panel">
+            <img style="background-image: url('{{ service.image }}')" />
+            <div class="title"><span ng-bind="service.name"></span></div>
+            <div class="description"><span ng-bind="service.description"></span></div>
+          </div>
+        </div>
+      </div> <!-- col-sm-12 -->
+    </div>
+
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="page-header page-header-with-icon">
+          <i class="fa fa-cloud"></i>
+          <h3 ng-bind="otherServicesTitle"></h3>
+        </div>
+
+        <div class="otherService col-xs-12 col-sm-12 col-md-6 col-lg-6" ng-repeat="otherService in otherServices">
+          <div class="media">
+            <div class="media-left">
+              <i class="fa text-white" ng-class="otherService.cls"></i>
+            </div>
+            <div class="media-body">
+              <h4 class="media-heading">{{ otherService.name }}</h4>
+              {{ otherService.description }}
+            </div>
+          </div>
+        </div>
+      </div> <!-- col-sm-12 -->
+    </div> <!-- row -->
+  </div> <!-- container -->
+
+</section>

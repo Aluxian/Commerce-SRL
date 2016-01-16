@@ -1,0 +1,127 @@
+<section class="home">
+  <div class="bg-image">
+    <div class="overlay">
+      <div class="jumbotron">
+        <div class="container">
+          <h1>Impreuna construim viitorul</h1>
+          <p>Cu precizie inegalabila si design inovator.<br><i>Perfect</i>
+            este celalalt nume al nostru.</p>
+          <button class="btn btn-link" ng-click="findMore()">Descopera-ne</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="page-header page-header-with-icon">
+          <i class="fa fa-cloud"></i>
+          <h3 ng-bind="servicesTitle.$value"></h3>
+        </div>
+
+        <div class="service col-xs-12 col-sm-12 col-md-4 col-lg-4" ng-repeat="service in services | limitTo:3">
+          <div class="panel" ng-click="goTo('servicii')" style="cursor: pointer;">
+            <img style="background-image: url('{{ service.image }}')" />
+            <div class="title"><span ng-bind="service.name"></span></div>
+            <div class="description"><span ng-bind="service.description"></span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="page-header page-header-with-icon">
+          <i class="fa fa-star"></i>
+          <h3 ng-bind="principlesTitle.$value"></h3>
+        </div>
+
+        <div class="principle col-xs-12 col-sm-12 col-md-4 col-lg-4" ng-repeat="principle in principles | limitTo:3">
+          <div class="txt-panel">
+            <h3>{{ principle.name }}</h3>
+            <h4>{{ principle.description }}</h4>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="page-header page-header-with-icon">
+          <i class="fa fa-suitcase"></i>
+          <h3 ng-bind="projectsTitle.$value"></h3>
+        </div>
+
+        <div class="project col-xs-12 col-sm-12 col-md-4 col-lg-4" ng-repeat="project in projects | limitTo:3">
+          <div class="img-panel" ng-click="goTo('portofoliu')" style="cursor: pointer;">
+            <img style="background-image: url('{{ project.image }}')" />
+            <h3>{{ project.name }}</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="page-header page-header-with-icon">
+          <i class="fa fa-refresh"></i>
+          <h3 ng-bind="processesTitle.$value"></h3>
+        </div>
+
+        <div class="process col-xs-12 col-sm-6 col-md-3 col-lg-3" ng-repeat="process in processes | limitTo:4">
+          <div class="circle-panel">
+            <div class="circle-stat-wrapper">
+              <p class="percent">{{$index+1}}</p>
+            </div>
+            <h3 class="title">{{ process.name }}</h3>
+            <h4 class="description">{{ process.description }}</h4>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-12 testimonials">
+        <div class="page-header page-header-with-icon">
+          <i class="fa fa-quote-right"></i>
+          <h3 ng-bind="testimonialsTitle.$value"></h3>
+        </div>
+
+        <div class="row quotes">
+          <carousel interval="testimonialsInterval">
+            <slide ng-repeat="testimonial in testimonials">
+              <div class="item quote">
+                <div class="col-sm-12 text-center">
+                  <p class="lead" ng-bind="testimonial.content"></p>
+                  <div class="author-wrapper">
+                    <p class="author">
+                      <strong>{{testimonial.author}}</strong>, {{testimonial.company}}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </slide>
+          </carousel>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="page-header page-header-with-icon">
+          <i class="fa fa-user"></i>
+          <h3 ng-bind="teamTitle.$value"></h3>
+        </div>
+
+        <div class="member col-xs-12 col-sm-6 col-md-3 col-lg-3" ng-repeat="member in team | limitTo:4">
+          <div class="member-panel">
+            <img style="background-image: url('{{ member.image }}')" />
+            <h3>{{ member.name }}</h3>
+            <h4>{{ member.description }}</h4>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
